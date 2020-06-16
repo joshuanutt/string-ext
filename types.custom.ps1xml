@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Types>
+    <Type>
+        <Name>System.String</Name>
+        <Members>
+            <ScriptMethod>
+                <Name>GetEmail</Name>
+
+                <Script>
+
+                    $email = [regex]::Matches($this, "([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})", "IgnoreCase ") | select -expandproperty value
+                    $email
+                </Script>
+            </ScriptMethod>
+            <ScriptMethod>
+                <Name>StripAngleBracketedEmail</Name>
+
+                <Script>
+                    [regex]::Matches($this, '.+?(?=&lt;)', "IgnoreCase ") | select -expandproperty value
+                </Script>
+            </ScriptMethod>
+            <ScriptMethod>
+                <Name>StripBullets</Name>
+
+                <Script>
+                    $this -replace("([0-9A-Z]+[.)]|•)\s+","")
+                </Script>
+            </ScriptMethod>
+        </Members>
+    </Type>
+</Types>
