@@ -21,10 +21,12 @@
                 </Script>
             </ScriptMethod>
             <ScriptMethod>
-                <Name>StripBullets</Name>
+                <Name>ToTitleCase</Name>
 
                 <Script>
-                    $this -replace("([0-9A-Z]+[.)]|•)\s+","")
+                    $text = $this.ToLower()
+                    $textInfo = (Get-Culture).TextInfo
+                    $textInfo.ToTitleCase($text)
                 </Script>
             </ScriptMethod>
         </Members>
