@@ -29,6 +29,19 @@
                     $textInfo.ToTitleCase($text)
                 </Script>
             </ScriptMethod>
+            <ScriptMethod>
+                <Name>Strip</Name>
+
+                <Script>
+                    $text = $this 
+
+                    foreach ($arg in $args){
+                        $text = $text -ireplace [regex]::Escape("$arg"), ""
+                    }
+
+                    $text
+                </Script>
+            </ScriptMethod>
         </Members>
     </Type>
 </Types>
